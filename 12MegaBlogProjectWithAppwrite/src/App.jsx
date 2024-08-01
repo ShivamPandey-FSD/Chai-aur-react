@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux';
 import './App.css';
 import authService from './appwrite/auth';
 import { login, logout } from './store/authSlice';
-import loadingLogo from './assets/loading_logo.svg';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { Outlet } from 'react-router-dom';
+import Loading from './components/index';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -39,10 +39,8 @@ function App() {
       </div>
     </div>
   ) : (
-    <div className="min-h-[90vh] flex justify-center items-center">
-      <img src={loadingLogo} alt="loading" className="bg-transparent" />
-    </div>
-  );
+    <Loading />
+  )
 }
 
 export default App;
