@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'
-import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import Loading from './index';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { Loading } from './index';
 
 export default function Protected({ children, authentication = true }) {
   const navigate = useNavigate();
@@ -17,12 +17,12 @@ export default function Protected({ children, authentication = true }) {
     // }
 
     if (authentication && authStatus !== authentication) {
-      navigate("/login");
+      navigate('/login');
     } else if (!authentication && authStatus !== authentication) {
-      navigate("/")
+      navigate('/');
     }
     setLoader(false);
   }, [authStatus, navigate, authentication]);
 
-  return loader ? <Loading /> : children
+  return loader ? <Loading /> : children;
 }

@@ -1,4 +1,4 @@
-import config from '../config'
+import config from '../config/config'
 import { Client, ID, Storage } from 'appwrite'
 
 export class FileService {

@@ -1,4 +1,4 @@
-import config from '../config'
+import config from '../config/config'
 import { Client, Databases, Query } from 'appwrite'
 
 export class PostService {
@@ -12,7 +12,7 @@ export class PostService {
     this.databases = new Databases(this.client);
   }
 
-  async createPost({title, slug, content, featuredImage, status, userId}) {
+  async createPost({ title, slug, content, featuredImage, status, userId }) {
     try {
       return await this.databases.createDocument(config.appwrite_database_id, config.appwrite_collection_id, slug, {
         title,
@@ -26,7 +26,7 @@ export class PostService {
     }
   }
 
-  async updatePost(slug, {title, content, featuredImage, status}) {
+  async updatePost(slug, { title, content, featuredImage, status }) {
     try {
       return await this.databases.updateDocument(config.appwrite_database_id, config.appwrite_collection_id, slug, {
         title,
@@ -39,7 +39,7 @@ export class PostService {
     }
   }
 
-  async daletePost(slug) {
+  async deletePost(slug) {
     try {
       return await this.databases.deleteDocument(config.appwrite_database_id, config.appwrite_collection_id, slug);
     } catch (error) {
